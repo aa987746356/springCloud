@@ -1,3 +1,5 @@
+
+
 # 10-28
 
 ![1572515381833](C:\Users\mengpeng\AppData\Roaming\Typora\typora-user-images\1572515381833.png)
@@ -343,8 +345,68 @@ run：过滤器的具体逻辑。可用很复杂，包括查sql，nosql去判断
 
 2.访问貌似有成功率， 就算服务是正常的 也不会说一直访问成功， 偶尔会失败。
 
-而且失败的概率不小。
-
 ![1572330462613](C:\Users\mengpeng\AppData\Roaming\Typora\typora-user-images\1572330462613.png)
 
 ![1572330483537](C:\Users\mengpeng\AppData\Roaming\Typora\typora-user-images\1572330483537.png)
+
+
+
+
+
+### config配置中心：
+
+​	为了方便服务配置文件统一管理，实时更新。个人理解这个服务是为了读取配置文件内容。
+
+依赖：
+
+```
+<dependency>    <groupId>org.springframework.cloud</groupId>    <artifactId>spring-cloud-config-server</artifactId></dependency>
+```
+
+
+
+启动类加注解：
+
+![1572580403231](C:\Users\mengpeng\AppData\Roaming\Typora\typora-user-images\1572580403231.png)
+
+![1572580553203](C:\Users\mengpeng\AppData\Roaming\Typora\typora-user-images\1572580553203.png)
+
+坑：spring.cloud.config.server.git.searchPaths 当为要访问的项目的 配置文件的地址， 这个可以是任意一个项目。 但是初始位置是项目最外层 请注意。 
+
+
+
+实例： 获取远程配置文件的内容，
+
+创建一个springboot 子项目。
+
+添加以下依赖：
+
+```
+<dependency>    <groupId>org.springframework.cloud</groupId>    <artifactId>spring-cloud-starter-config</artifactId></dependency>
+```
+
+配置文件：
+
+![1572587733975](C:\Users\mengpeng\AppData\Roaming\Typora\typora-user-images\1572587733975.png)
+
+用@value 获取远程文件中的内容。
+
+![1572587807477](C:\Users\mengpeng\AppData\Roaming\Typora\typora-user-images\1572587807477.png)
+
+![1572588042773](C:\Users\mengpeng\AppData\Roaming\Typora\typora-user-images\1572588042773.png)
+
+![1572588066819](C:\Users\mengpeng\AppData\Roaming\Typora\typora-user-images\1572588066819.png)
+
+
+
+![1572587881953](C:\Users\mengpeng\AppData\Roaming\Typora\typora-user-images\1572587881953.png)
+
+
+
+
+
+### 消息总线
+
+安装 rabbitMQ:  
+
+![1572590278821](C:\Users\mengpeng\AppData\Roaming\Typora\typora-user-images\1572590278821.png)
